@@ -7,7 +7,7 @@ import Dispatcher from './core/Dispatcher';
 import Router from './Router';
 import Location from './core/Location';
 import ActionTypes from './constants/ActionTypes';
-import { addEventListener, removeEventListener } from './utils/DOMUtils';
+import { addEventListener, removeEventListener } from '../utils/DOMUtils';
 
 const container = document.getElementById('app');
 const context = {

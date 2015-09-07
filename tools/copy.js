@@ -23,7 +23,7 @@ export default async () => {
     copy('src/public', 'build/public'),
 
     // Files with content (e.g. *.md files)
-    copy('src/content', 'build/content'),
+    copy('src/backend/api/content', 'build/content'),
 
     // Website and email templates
     copy('src/templates', 'build/templates'),
@@ -40,10 +40,10 @@ export default async () => {
   });
 
   if (global.WATCH) {
-    const watcher = await watch('src/content/**/*.*');
+    const watcher = await watch('src/backend/api/content/**/*.*');
     watcher.on('changed', async (file) => {
-      file = file.substr(path.join(__dirname, '../src/content/').length);
-      await copy(`src/content/${file}`, `build/content/${file}`);
+      file = file.substr(path.join(__dirname, '../src/backend/api/content/').length);
+      await copy(`src/backend/api/content/${file}`, `build/content/${file}`);
     });
   }
 };

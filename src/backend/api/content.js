@@ -4,7 +4,7 @@ import { join } from 'path';
 import { Router } from 'express';
 import jade from 'jade';
 import fm from 'front-matter';
-import fs from '../utils/fs';
+import fs from '../../utils/fs';
 
 // A folder with Jade/Markdown/HTML content pages
 const CONTENT_DIR = join(__dirname, './content');
@@ -34,7 +34,7 @@ router.get('/', async (req, res, next) => {
     }
 
     if (!await fs.exists(fileName)) {
-      res.status(404).send({error: `The page '${path}' is not found.`});
+      res.status(404).send({error: `The page '${path} ${fileName}' is not found.`});
     } else {
       const source = await fs.readFile(fileName, { encoding: 'utf8' });
       const content = parseJade(path, source);

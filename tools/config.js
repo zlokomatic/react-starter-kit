@@ -82,13 +82,26 @@ const config = {
       test: /\.svg/,
       loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
     }, {
+      test: /\.(woff)$/,
+      loader: 'url-loader?limit=10000&mimetype=font/woff'
+    }, {
+      test: /\.(woff2)$/,
+      loader: 'url-loader?limit=10000&mimetype=font/woff2'
+    }, {
+      test: /\.(eot)$/,
+      loader: 'url-loader?limit=10000&mimetype=font/eot'
+    }, {
+      test: /\.(ttf)$/,
+      loader: 'url-loader?limit=10000&mimetype=font/ttf'
+    }, {
       test: /\.jsx?$/,
       include: [
         path.resolve(__dirname, '../node_modules/react-routing/src'),
         path.resolve(__dirname, '../src')
       ],
       loaders: [...(WATCH ? ['react-hot'] : []), 'babel-loader']
-    }]
+    }
+    ]
   },
 
   postcss: [
@@ -105,7 +118,7 @@ const config = {
 const appConfig = merge({}, config, {
   entry: [
     ...(WATCH && ['webpack-hot-middleware/client']),
-    './src/app.js'
+    './src/frontend/app.js'
   ],
   output: {
     path: path.join(__dirname, '../build/public'),
